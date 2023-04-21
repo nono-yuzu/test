@@ -16,6 +16,7 @@
 		FFED3FF329F27ED000D0419E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFED3FF229F27ED000D0419E /* RealmSwift */; };
 		FFED3FF529F27FE000D0419E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FF429F27FE000D0419E /* Event.swift */; };
 		FFED3FF729F27FF600D0419E /* HogeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FF629F27FF600D0419E /* HogeView.swift */; };
+		FFED3FF929F2889A00D0419E /* CalendarTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FF829F2889A00D0419E /* CalendarTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FFED3FE529F27DF300D0419E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FFED3FF429F27FE000D0419E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFED3FF629F27FF600D0419E /* HogeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogeView.swift; sourceTree = "<group>"; };
+		FFED3FF829F2889A00D0419E /* CalendarTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */,
 				FFED3FF429F27FE000D0419E /* Event.swift */,
 				FFED3FE029F27DF100D0419E /* ContentView.swift */,
+				FFED3FF829F2889A00D0419E /* CalendarTestView.swift */,
 				FFED3FF629F27FF600D0419E /* HogeView.swift */,
 				FFED3FE229F27DF300D0419E /* Assets.xcassets */,
 				FFED3FE429F27DF300D0419E /* Preview Content */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */,
+				FFED3FF929F2889A00D0419E /* CalendarTestView.swift in Sources */,
 				FFED3FF529F27FE000D0419E /* Event.swift in Sources */,
 				FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */,
 				FFED3FF729F27FF600D0419E /* HogeView.swift in Sources */,

@@ -15,6 +15,7 @@ struct ContentView: View {
     @State  var selectedDate_2: Date = Date()
     @State private var path = [String]()
     @State private var show = false
+    @State private var events = [Event]()
     
     var body: some View {
         VStack {
@@ -22,13 +23,18 @@ struct ContentView: View {
             CalendarTestView(selectedDate: $selectedDate)
                 .frame(width: 500, height: 500)
             Spacer()
+            
             if let date = selectedDate {
                 Label(getFormattedDate(date: date), systemImage: "calendar")
-                
-                
-            } else {
+                if let event = events.filter({getFormattedDate(date: $0.date) == getFormattedDate(date: date)}).first {
+                    Text("勉強時間: \(event.hour)時間\(event.min)分")
+                }
+            }
+
+            else {
                 Text("選択されていません")
             }
+            
             
             Button(action: {
                 show = true
@@ -60,35 +66,3 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct CalendarTestView: UIViewRepresentable {
-    @Binding var selectedDate: Date?
-    
-    func makeUIView(context: Context) -> UIView {
-        let fscalendar = FSCalendar()
-        fscalendar.delegate = context.coordinator
-        return fscalendar
-    }
-    
-    func updateUIView(_ uiView: UIView, context: Context) {
-        // No update needed
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(selectedDate: $selectedDate)
-    }
-    
-    class Coordinator: NSObject, FSCalendarDelegate {
-        @Binding var selectedDate: Date?
-        
-        init(selectedDate: Binding<Date?>) {
-            self._selectedDate = selectedDate
-        }
-        
-        func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            selectedDate = date
-        }
-    }
-    
-    
-    
-}

@@ -12,5 +12,6 @@ class Event: Object {
     @objc dynamic var hour = 0
     @objc dynamic var min = 0
     @objc dynamic var all = 0
+    @objc dynamic var date = Date()
 }
 

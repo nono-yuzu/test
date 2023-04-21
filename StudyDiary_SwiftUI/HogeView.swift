@@ -14,6 +14,7 @@ struct HogeView: View {
     @State private var selectedhour = 0
     @State private var selectedmin = 0
     @State private var selectedall = 0
+    @State private var events = [Event]()
     //    ContentView中のHogeView()の引数になってる
     var selectDate: Date?
     var body: some View {
@@ -41,7 +42,7 @@ struct HogeView: View {
                 print(selectedhour)
                 print(selectedmin)
             }) {
-                Text("test")
+                Text("保存")
             }
             GeometryReader { geometry in
                 HStack{
@@ -81,18 +82,17 @@ struct HogeView: View {
     }
     
     func saveEvent(){
-//        selectedhour = selectedhour + 1
-//        selectedmin = selectedmin + 1
+
 //       全て分間算してrealmに保存
         selectedall = selectedhour * 60 + selectedmin
         print(selectedall)
         let realm = try! Realm()
         try! realm.write {
-            let event = [Event(value: ["hour": selectedhour, "min": selectedmin, "all": selectedall])]
+            let event = [Event(value: ["date": selectDate ?? Date(), "hour": selectedhour, "min": selectedmin, "all": selectedall])]
             realm.add(event)
             print(event)
-//        selectedhour = selectedhour - 1
-//        selectedmin = selectedmin - 1
+            print("保存しました")
+
         }
     }
 }
