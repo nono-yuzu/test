@@ -11,6 +11,11 @@
 		FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FE029F27DF100D0419E /* ContentView.swift */; };
 		FFED3FE329F27DF300D0419E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFED3FE229F27DF300D0419E /* Assets.xcassets */; };
 		FFED3FE629F27DF300D0419E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFED3FE529F27DF300D0419E /* Preview Assets.xcassets */; };
+		FFED3FEE29F27E9F00D0419E /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = FFED3FED29F27E9F00D0419E /* FSCalendar */; };
+		FFED3FF129F27ED000D0419E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = FFED3FF029F27ED000D0419E /* Realm */; };
+		FFED3FF329F27ED000D0419E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FFED3FF229F27ED000D0419E /* RealmSwift */; };
+		FFED3FF529F27FE000D0419E /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FF429F27FE000D0419E /* Event.swift */; };
+		FFED3FF729F27FF600D0419E /* HogeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FF629F27FF600D0419E /* HogeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,8 @@
 		FFED3FE029F27DF100D0419E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFED3FE229F27DF300D0419E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFED3FE529F27DF300D0419E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FFED3FF429F27FE000D0419E /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFED3FF629F27FF600D0419E /* HogeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HogeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFED3FF329F27ED000D0419E /* RealmSwift in Frameworks */,
+				FFED3FF129F27ED000D0419E /* Realm in Frameworks */,
+				FFED3FEE29F27E9F00D0419E /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,7 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */,
+				FFED3FF429F27FE000D0419E /* Event.swift */,
 				FFED3FE029F27DF100D0419E /* ContentView.swift */,
+				FFED3FF629F27FF600D0419E /* HogeView.swift */,
 				FFED3FE229F27DF300D0419E /* Assets.xcassets */,
 				FFED3FE429F27DF300D0419E /* Preview Content */,
 			);
@@ -83,6 +95,11 @@
 			dependencies = (
 			);
 			name = StudyDiary_SwiftUI;
+			packageProductDependencies = (
+				FFED3FED29F27E9F00D0419E /* FSCalendar */,
+				FFED3FF029F27ED000D0419E /* Realm */,
+				FFED3FF229F27ED000D0419E /* RealmSwift */,
+			);
 			productName = StudyDiary_SwiftUI;
 			productReference = FFED3FDB29F27DF100D0419E /* StudyDiary_SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,10 @@
 				Base,
 			);
 			mainGroup = FFED3FD229F27DF100D0419E;
+			packageReferences = (
+				FFED3FEC29F27E9E00D0419E /* XCRemoteSwiftPackageReference "FSCalendar" */,
+				FFED3FEF29F27ED000D0419E /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = FFED3FDC29F27DF100D0419E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,7 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */,
+				FFED3FF529F27FE000D0419E /* Event.swift in Sources */,
 				FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */,
+				FFED3FF729F27FF600D0419E /* HogeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +360,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FFED3FEC29F27E9E00D0419E /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		FFED3FEF29F27ED000D0419E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FFED3FED29F27E9F00D0419E /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFED3FEC29F27E9E00D0419E /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		FFED3FF029F27ED000D0419E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFED3FEF29F27ED000D0419E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		FFED3FF229F27ED000D0419E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FFED3FEF29F27ED000D0419E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FFED3FD329F27DF100D0419E /* Project object */;
 }
