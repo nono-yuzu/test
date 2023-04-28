@@ -34,7 +34,7 @@ struct ContentView: View {
             else {
                 Text("選択されていません")
             }
-            
+                        
             
             Button(action: {
                 show = true
@@ -49,6 +49,16 @@ struct ContentView: View {
             
         }
         .padding()
+//        呼び出しのタイミングが遅かったから表示に反映されていなかったてこと？
+        .onAppear {
+              loadData()
+          }
+      }
+
+      func loadData() {
+          let realm = try! Realm()
+          let allEvents = realm.objects(Event.self)
+          events = Array(allEvents)
         
     }
 }

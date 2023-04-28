@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FFC1D1DE29FBBDC300055900 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1D1DD29FBBDC300055900 /* ChartView.swift */; };
 		FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */; };
 		FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FE029F27DF100D0419E /* ContentView.swift */; };
 		FFED3FE329F27DF300D0419E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFED3FE229F27DF300D0419E /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FFC1D1DD29FBBDC300055900 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		FFED3FDB29F27DF100D0419E /* StudyDiary_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyDiary_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDiary_SwiftUIApp.swift; sourceTree = "<group>"; };
 		FFED3FE029F27DF100D0419E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */,
 				FFED3FF429F27FE000D0419E /* Event.swift */,
 				FFED3FE029F27DF100D0419E /* ContentView.swift */,
+				FFC1D1DD29FBBDC300055900 /* ChartView.swift */,
 				FFED3FF829F2889A00D0419E /* CalendarTestView.swift */,
 				FFED3FF629F27FF600D0419E /* HogeView.swift */,
 				FFED3FE229F27DF300D0419E /* Assets.xcassets */,
@@ -166,6 +169,7 @@
 				FFED3FF529F27FE000D0419E /* Event.swift in Sources */,
 				FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */,
 				FFED3FF729F27FF600D0419E /* HogeView.swift in Sources */,
+				FFC1D1DE29FBBDC300055900 /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
