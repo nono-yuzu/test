@@ -7,6 +7,7 @@
 
 import SwiftUI
 import RealmSwift
+import Charts
 //２４時間のピッカー
 struct HogeView: View {
     @State private var back = false
@@ -15,17 +16,16 @@ struct HogeView: View {
     @State private var selectedmin = 0
     @State private var selectedall = 0
     @State private var events = [Event]()
+    @State private var text = ""
     //    ContentView中のHogeView()の引数になってる
     var selectDate: Date?
     var body: some View {
         VStack {
-            
             if let date = selectDate {
                 Text("選択しています:\(getFormattedDate(date: date))")
-                
-                
             } else {
                 Text("選択されていません")
+                
             }
             Button(action: {
                 back = true
@@ -37,18 +37,19 @@ struct HogeView: View {
                 ContentView()
             }
             Button(action :{
-               
+                
                 saveEvent()
                 print(selectedhour)
                 print(selectedmin)
             }) {
                 Text("保存")
             }
+            //ChartView()
             GeometryReader { geometry in
                 HStack{
                     Text("勉強時間")
                     Picker(selection: $selectedhour, label: Text("language")) {
-    
+                        
                         ForEach(0..<24) {
                             Text("\($0)")
                         }
@@ -78,12 +79,15 @@ struct HogeView: View {
                     .padding()
                 }
             }
+            TextEditor(text: $text)
+                .frame(width: 300, height: 200)
+                .border(Color.gray, width: 1)
         }
     }
     
     func saveEvent(){
-
-//       全て分間算してrealmに保存
+        
+        //       全て分間算してrealmに保存
         selectedall = selectedhour * 60 + selectedmin
         print(selectedall)
         let realm = try! Realm()
@@ -92,7 +96,7 @@ struct HogeView: View {
             realm.add(event)
             print(event)
             print("保存しました")
-
+            
         }
     }
 }
