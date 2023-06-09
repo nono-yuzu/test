@@ -19,6 +19,7 @@ struct HogeView: View {
     @State private var text = ""
     
     @State var weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
+    
     //    ContentView中のHogeView()の引数になってる
     var selectDate: Date?
     var body: some View {
@@ -46,6 +47,10 @@ struct HogeView: View {
             }) {
                 Text("保存")
             }
+            .onAppear() {
+                loadData()
+            }
+            
             ChartView(weekStudyMinutes: $weekStudyMinutes)
             GeometryReader { geometry in
                 HStack{
@@ -85,10 +90,10 @@ struct HogeView: View {
                 .frame(width: 300, height: 200)
                 .border(Color.gray, width: 1)
         }
+        
     }
     
     func saveEvent(){
-        
         //       全て分間算してrealmに保存
         selectedall = selectedhour * 60 + selectedmin
         print(selectedall)
@@ -100,6 +105,13 @@ struct HogeView: View {
             print("保存しました")
             
         }
+    }
+    
+    func loadData() {
+        let realm = try! Realm()
+        let allEvents = realm.objects(Event.self)
+        events = Array(allEvents)
+        
     }
 }
 
