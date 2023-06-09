@@ -26,16 +26,17 @@ struct ChartEntry: Identifiable {
 
 struct ChartView: View {
     @State private var events = [Event]()
-   
+    let weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
+    
     var body: some View {
         let data: [ChartEntry] = [
-            .init(title: "月曜日", value: 5),
-            .init(title: "火曜日", value: 12),
-            .init(title: "水曜日", value: 7),
-            .init(title: "木曜日", value: 8),
-            .init(title: "金曜日", value: 8),
-            .init(title: "土曜日", value: 8),
-            .init(title: "日曜日", value: 10)
+            .init(title: "月曜日", value: Double(weekStudyMinutes[0])),
+            .init(title: "火曜日", value: Double(weekStudyMinutes[1])),
+            .init(title: "水曜日", value: Double(weekStudyMinutes[2])),
+            .init(title: "木曜日", value: Double(weekStudyMinutes[3])),
+            .init(title: "金曜日", value: Double(weekStudyMinutes[4])),
+            .init(title: "土曜日", value: Double(weekStudyMinutes[5])),
+            .init(title: "日曜日", value: Double(weekStudyMinutes[6]))
         ]
 
         Chart {
