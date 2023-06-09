@@ -35,7 +35,7 @@ struct ChartView: View {
             .init(title: "木曜日", value: 8),
             .init(title: "金曜日", value: 8),
             .init(title: "土曜日", value: 8),
-            .init(title: "土曜日", value: 8)
+            .init(title: "土曜日", value: 10)
         ]
 
         Chart {
