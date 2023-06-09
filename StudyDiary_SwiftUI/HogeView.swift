@@ -44,7 +44,7 @@ struct HogeView: View {
             }) {
                 Text("保存")
             }
-            //ChartView()
+            ChartView()
             GeometryReader { geometry in
                 HStack{
                     Text("勉強時間")
