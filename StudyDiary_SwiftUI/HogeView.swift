@@ -17,6 +17,8 @@ struct HogeView: View {
     @State private var selectedall = 0
     @State private var events = [Event]()
     @State private var text = ""
+    
+    @State var weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
     //    ContentView中のHogeView()の引数になってる
     var selectDate: Date?
     var body: some View {
@@ -44,7 +46,7 @@ struct HogeView: View {
             }) {
                 Text("保存")
             }
-            ChartView()
+            ChartView(weekStudyMinutes: $weekStudyMinutes)
             GeometryReader { geometry in
                 HStack{
                     Text("勉強時間")

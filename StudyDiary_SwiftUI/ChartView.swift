@@ -26,7 +26,8 @@ struct ChartEntry: Identifiable {
 
 struct ChartView: View {
     @State private var events = [Event]()
-    let weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
+//    let weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
+    @Binding var weekStudyMinutes: [Int]
     
     var body: some View {
         let data: [ChartEntry] = [
@@ -59,9 +60,9 @@ struct ChartView: View {
         events = Array(allEvents)
     }
 }
-
-struct ChartView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChartView()
-    }
-}
+//
+//struct ChartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChartView(weekStudyMinutes: [5, 12, 7, 8, 8, 8, 10])
+//    }
+//}
