@@ -48,7 +48,10 @@ struct HogeView: View {
                 Text("保存")
             }
             .onAppear() {
-                loadData()
+                print(loadData())
+                // #TODO: 直近一週間のデータに絞る
+                // #TODO: weekStudyMinutesの変数を更新
+                // #TODO: weekStudyMinutesの変更をグラフに反映
             }
             
             ChartView(weekStudyMinutes: $weekStudyMinutes)
@@ -107,11 +110,11 @@ struct HogeView: View {
         }
     }
     
-    func loadData() {
+    func loadData() -> Array<Any> {
         let realm = try! Realm()
         let allEvents = realm.objects(Event.self)
         events = Array(allEvents)
-        
+        return events
     }
 }
 

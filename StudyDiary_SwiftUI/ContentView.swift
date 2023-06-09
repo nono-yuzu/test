@@ -60,7 +60,9 @@ struct ContentView: View {
           let allEvents = realm.objects(Event.self)
           events = Array(allEvents)
         
+    
     }
+
 }
 
 private func getFormattedDate(date: Date) -> String {
