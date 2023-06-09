@@ -5,31 +5,37 @@
 //  Created by 柳和花 on 2023/04/28.
 //
 
+//gitはtestに保存してある
 import SwiftUI
 import Charts
 import RealmSwift
 
 struct ChartEntry: Identifiable {
-    var all = 0
-    var date = Date()
+    var title: String
+    var value: Double
     var color: Color = .green
     var id: String {
         return title + String(value)
     }
+}
     
 //    @objc dynamic var hour = 0
 //    @objc dynamic var min = 0
 //    @objc dynamic var all = 0
 //    @objc dynamic var date = Date()
-}
+
 struct ChartView: View {
     @State private var events = [Event]()
    
     var body: some View {
         let data: [ChartEntry] = [
-            .init(date: "n日", value: 24),
-            .init(date: "n+1日", value: 12),
-            .init(date: "n+2日", value: 8)
+            .init(title: "月曜日", value: 5),
+            .init(title: "火曜日", value: 12),
+            .init(title: "水曜日", value: 7),
+            .init(title: "木曜日", value: 8),
+            .init(title: "金曜日", value: 8),
+            .init(title: "土曜日", value: 8),
+            .init(title: "土曜日", value: 8)
         ]
 
         Chart {
@@ -39,10 +45,6 @@ struct ChartView: View {
                     y: .value("Value", dataPoint.value)
                 )
                 .foregroundStyle(dataPoint.color)
-                PointMark(
-                    x: .value("Category", dataPoint.title),
-                    y: .value("Value", dataPoint.value)
-                )
             }
         }
         .frame(height: 200)
