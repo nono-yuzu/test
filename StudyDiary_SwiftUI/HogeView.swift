@@ -54,6 +54,10 @@ struct HogeView: View {
                 // #TODO: weekStudyMinutesの変更をグラフに反映
             }
             
+            List(events) { event in
+                          Text("\(event.all)")
+                         }
+            
             ChartView(weekStudyMinutes: $weekStudyMinutes)
             GeometryReader { geometry in
                 HStack{
