@@ -64,9 +64,15 @@ struct HogeView: View {
                 // #TODO: weekStudyMinutesの変数を更新
                 // #TODO: weekStudyMinutesの変更をグラフに反映
             }
-            List(eventViewModel.events) { event in
-                Text("\(event.all)")
+//            List(eventViewModel.events) { event in
+//                Text("\(event.all)")
+//            }
+            if let events = eventViewModel.events {
+                ForEach(events) { event in
+                    Text("\(event.all)")
+                }
             }
+            
             Button(action : {
                 getEvent()
             }) {
