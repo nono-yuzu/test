@@ -67,10 +67,13 @@ struct HogeView: View {
 //            List(eventViewModel.events) { event in
 //                Text("\(event.all)")
 //            }
-            if let events = eventViewModel.events {
-                ForEach(events) { event in
-                    Text("\(event.all)")
-                }
+//            if let events = eventViewModel.events {
+//                ForEach(events) { event in
+//                    Text("\(event.all)")
+//                }
+//            }
+            ForEach(eventViewModel.events) { event in
+                Text("\(event.all)")
             }
             
             Button(action : {
