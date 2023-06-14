@@ -17,9 +17,17 @@ struct HogeView: View {
     @State private var selectedall = 0
     @State private var events = [Event]()
     @State private var text = ""
+    @ObservedObject private var eventViewModel = EventViewModel()
     
     @State var weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
     
+    init(){
+        loadData()
+        
+    }
+//    List(eventViewModel.events) { event in
+//        Text("\(event.all)")
+//    }
     //    ContentView中のHogeView()の引数になってる
     var selectDate: Date?
     var body: some View {
@@ -42,18 +50,30 @@ struct HogeView: View {
             Button(action :{
                 
                 saveEvent()
-                print(selectedhour)
-                print(selectedmin)
+//                print(selectedhour)
+//                print(selectedmin)
             }) {
                 Text("保存")
             }
+            
+                
             .onAppear() {
                 print(loadData())
+            
                 // #TODO: 直近一週間のデータに絞る
                 // #TODO: weekStudyMinutesの変数を更新
                 // #TODO: weekStudyMinutesの変更をグラフに反映
             }
-            
+            List(eventViewModel.events) { event in
+                Text("\(event.all)")
+            }
+            Button(action : {
+                getEvent()
+            }) {
+                Text("データ取得")
+                
+            }
+           
             ChartView(weekStudyMinutes: $weekStudyMinutes)
             GeometryReader { geometry in
                 HStack{
@@ -88,13 +108,19 @@ struct HogeView: View {
                     .pickerStyle(.wheel)
                     .padding()
                 }
+                
             }
+            
+            
             TextEditor(text: $text)
                 .frame(width: 300, height: 200)
                 .border(Color.gray, width: 1)
         }
         
     }
+    
+    
+    
     
     func saveEvent(){
         //       全て分間算してrealmに保存
@@ -110,12 +136,25 @@ struct HogeView: View {
         }
     }
     
-    func loadData() -> Array<Any> {
+    func getEvent(){
+        let realm = try! Realm()
+        let result = realm.objects(Event.self).value(forKey: "all")
+        print(result)
+    }
+    
+//    func loadData() -> Array<Any> {
+//        let realm = try! Realm()
+//        let allEvents = realm.objects(Event.self)
+////        let result = realm.objects(Event.self).value(forKey: "all")
+//        events = Array(allEvents)
+//        return events
+//    }
+    func loadData() {
         let realm = try! Realm()
         let allEvents = realm.objects(Event.self)
         events = Array(allEvents)
-        return events
     }
+    
 }
 
 
@@ -133,4 +172,5 @@ struct HogeView_Previews: PreviewProvider {
         HogeView()
     }
 }
+
 

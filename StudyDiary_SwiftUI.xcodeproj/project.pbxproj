@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF0E65252A39D5590092B8D8 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0E65242A39D5590092B8D8 /* SwiftUIView.swift */; };
 		FFC1D1DE29FBBDC300055900 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC1D1DD29FBBDC300055900 /* ChartView.swift */; };
 		FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */; };
 		FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFED3FE029F27DF100D0419E /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FF0E65242A39D5590092B8D8 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		FFC1D1DD29FBBDC300055900 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		FFED3FDB29F27DF100D0419E /* StudyDiary_SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyDiary_SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFED3FDE29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyDiary_SwiftUIApp.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				FFC1D1DD29FBBDC300055900 /* ChartView.swift */,
 				FFED3FF829F2889A00D0419E /* CalendarTestView.swift */,
 				FFED3FF629F27FF600D0419E /* HogeView.swift */,
+				FF0E65242A39D5590092B8D8 /* SwiftUIView.swift */,
 				FFED3FE229F27DF300D0419E /* Assets.xcassets */,
 				FFED3FE429F27DF300D0419E /* Preview Content */,
 			);
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFED3FE129F27DF100D0419E /* ContentView.swift in Sources */,
+				FF0E65252A39D5590092B8D8 /* SwiftUIView.swift in Sources */,
 				FFED3FF929F2889A00D0419E /* CalendarTestView.swift in Sources */,
 				FFED3FF529F27FE000D0419E /* Event.swift in Sources */,
 				FFED3FDF29F27DF100D0419E /* StudyDiary_SwiftUIApp.swift in Sources */,
