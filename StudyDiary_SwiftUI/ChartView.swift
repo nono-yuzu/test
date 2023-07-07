@@ -1,11 +1,3 @@
-//
-//  ChartView.swift
-//  StudyDiary_SwiftUI
-//
-//  Created by 柳和花 on 2023/04/28.
-//
-
-//gitはtestに保存してある
 import SwiftUI
 import Charts
 import RealmSwift
@@ -18,17 +10,11 @@ struct ChartEntry: Identifiable {
         return title + String(value)
     }
 }
-    
-//    @objc dynamic var hour = 0
-//    @objc dynamic var min = 0
-//    @objc dynamic var all = 0
-//    @objc dynamic var date = Date()
 
 struct ChartView: View {
     @State private var events = [Event]()
-//    let weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
     @Binding var weekStudyMinutes: [Int]
-    
+
     var body: some View {
         let data: [ChartEntry] = [
             .init(title: "月曜日", value: Double(weekStudyMinutes[0])),
@@ -51,18 +37,161 @@ struct ChartView: View {
         }
         .frame(height: 200)
         .onAppear {
-              loadData()
-          }
+            loadData()
+        }
     }
+
     func loadData() {
         let realm = try! Realm()
         let allEvents = realm.objects(Event.self)
-        events = Array(allEvents)
+        let pastSevenDaysEvents = allEvents.filter("date > %@", Calendar.current.date(byAdding: .day, value: -6, to: Date())!)
+        events = Array(pastSevenDaysEvents)
+    }
+
+}
+
+struct HogeView: View {
+    @State private var back = false
+    @State private var departureDate = Date()
+    @State private var selectedhour = 0
+    @State private var selectedmin = 0
+    @State private var selectedall = 0
+    @State private var events = [Event]()
+    @State private var text = ""
+
+    @State var weekStudyMinutes: [Int] = [5, 12, 7, 8, 8, 8, 10]
+
+    var selectDate: Date?
+
+    var body: some View {
+        VStack {
+            if let date = selectDate {
+                Text("選択しています:\(getFormattedDate(date: date))")
+            } else {
+                Text("選択されていません")
+            }
+
+            Button(action: {
+                back = true
+            }) {
+                Text("画面切り替え")
+            }
+            .fullScreenCover(isPresented: $back) {
+                ContentView()
+            }
+
+            Button(action: {
+                saveEvent()
+                print(selectedhour)
+                print(selectedmin)
+            }) {
+                Text("保存")
+            }
+            .onAppear() {
+                print(loadData())
+                // #TODO: 直近一週間のデータに絞る
+                // #TODO: weekStudyMinutesの変数を更新
+                // #TODO: weekStudyMinutesの変更をグラフに反映
+            }
+
+            ChartView(weekStudyMinutes: $weekStudyMinutes)
+
+            GeometryReader { geometry in
+                HStack {
+                    Text("勉強時間")
+                    Picker(selection: $selectedhour, label: Text("language")) {
+                        ForEach(0..<24) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    .onReceive([self.selectedhour].publisher.first()) { hour in
+                        print("hour: \(hour)")
+                    }
+                    .labelsHidden()
+                    .frame(width: geometry.size.width / 3, height: geometry.size.height)
+                    .clipped()
+
+                    Picker(selection: $selectedmin, label: Text("language")) {
+                        ForEach(0..<60) {
+                            Text("\($0)")
+                        }
+                    }
+                    .pickerStyle(.wheel)
+                    .onReceive([self.selectedmin].publisher.first()) { min in
+                        print("min: \(min)")
+                    }
+                    .labelsHidden()
+                    .frame(width: geometry.size.width / 3, height: geometry.size.height)
+                    .clipped()
+                }
+            }
+
+            TextEditor(text: $text)
+                .frame(width: 300, height: 200)
+                .border(Color.gray, width: 1)
+        }
+    }
+
+    func saveEvent() {
+        selectedall = selectedhour * 60 + selectedmin
+        print(selectedall)
+        let realm = try! Realm()
+        try! realm.write {
+            let event = Event(value: ["date": selectDate ?? Date(), "hour": selectedhour, "min": selectedmin, "all": selectedall])
+            realm.add(event)
+            print(event)
+            print("保存しました")
+            
+            // 入力した勉強時間をweekStudyMinutesに反映させる
+            weekStudyMinutes[getWeekdayIndex(date: event.date)] = event.all
+        }
+    }
+
+
+    func loadData() {
+        let realm = try! Realm()
+        let allEvents = realm.objects(Event.self)
+        let pastSevenDaysEvents = allEvents.filter("date > %@", Calendar.current.date(byAdding: .day, value: -6, to: Date())!)
+        events = Array(pastSevenDaysEvents)
+        
+        // weekStudyMinutesを初期化
+        weekStudyMinutes = [Int](repeating: 0, count: 7)
+        
+        // イベントの勉強時間をweekStudyMinutesに反映させる
+        for event in events {
+            weekStudyMinutes[getWeekdayIndex(date: event.date)] = event.all
+        }
+    }
+
+    func getWeekdayIndex(date: Date) -> Int {
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        // 曜日に応じたインデックスを返す（日曜日: 0, 月曜日: 1, ...）
+        return weekday - 1
+    }
+
+}
+
+private func getFormattedDate(date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MM/dd"
+    formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+    return formatter.string(from: date)
+}
+
+struct HogeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HogeView()
     }
 }
-//
-//struct ChartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChartView(weekStudyMinutes: [5, 12, 7, 8, 8, 8, 10])
-//    }
-//}
+
+import Foundation
+
+class Event: Object {
+    @objc dynamic var hour = 0
+    @objc dynamic var min = 0
+    @objc dynamic var all = 0
+    @objc dynamic var date = Date()
+}
+
