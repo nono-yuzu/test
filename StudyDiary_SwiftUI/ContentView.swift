@@ -21,7 +21,7 @@ struct ContentView: View {
         VStack {
             
             CalendarTestView(selectedDate: $selectedDate)
-                .frame(width: 500, height: 500)
+                .frame(width: 400, height: 500)
             Spacer()
             
             if let date = selectedDate {
@@ -49,7 +49,7 @@ struct ContentView: View {
             
         }
         .padding()
-//        呼び出しのタイミングが遅かったから表示に反映されていなかったてこと？
+
         .onAppear {
               loadData()
           }
@@ -59,6 +59,7 @@ struct ContentView: View {
           let realm = try! Realm()
           let allEvents = realm.objects(Event.self)
           events = Array(allEvents)
+      
         
     
     }
@@ -67,6 +68,7 @@ struct ContentView: View {
 
 private func getFormattedDate(date: Date) -> String {
     let formatter = DateFormatter()
+    formatter.locale = Locale(identifier: "ja_JP")
     formatter.dateFormat = "MM/dd"
     return formatter.string(from: date)
 }

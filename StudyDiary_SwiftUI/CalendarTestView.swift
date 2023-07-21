@@ -30,12 +30,21 @@ struct CalendarTestView: UIViewRepresentable {
     class Coordinator: NSObject, FSCalendarDelegate {
         @Binding var selectedDate: Date?
         
+        
         init(selectedDate: Binding<Date?>) {
             self._selectedDate = selectedDate
         }
         
         func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-            selectedDate = date
+            let japanTimezone = TimeZone(identifier: "Asia/Tokyo")!
+               
+            let formatter = DateFormatter()
+            formatter.timeZone = japanTimezone
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let japanDateStr = formatter.string(from: date)
+            
+            let japanDate = formatter.date(from: japanDateStr)
+            selectedDate = japanDate
         }
         
         func getTime(hour: String) {
